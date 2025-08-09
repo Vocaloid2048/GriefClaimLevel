@@ -16,6 +16,11 @@ cmd-claimvalue-description: "查看當前領地的加權分數"
 cmd-claimlb-description: "查看領地分數排行榜"
 cmd-version-description: "查看插件版本"
 
+reload-start: "正在重新載入配置..."
+reload-success: "配置已重新載入"
+reload-failed: "配置重新載入失敗，請檢查控制台中的錯誤信息"
+reload-no-permission: "你沒有OP權限來使用此命令"
+
 claimvalue-player-only: "此命令只能由玩家使用"
 claimvalue-must-in-your-claim: "此命令只能在您的領地內使用"
 claimvalue-your-score: "你的領地 [${1}] 的加權分數為 ${2}"
@@ -26,4 +31,4 @@ claimvalue-detail-header-blockcount: "數量"
 claimvalue-detail-header-blockscore: "分數"
 
 version-plugin-author: "GriefClaimLevel 由 Voc-夜芷冰 (@vocaloid2048) 製作，感謝使用"
-version-plugin-version: "當前版本 ${1}"
+version-plugin-version: "插件版本 ${1}"

@@ -16,6 +16,11 @@ cmd-claimvalue-description: "View the weighted score of the current claim"
 cmd-claimlb-description: "View the claim score leaderboard"
 cmd-version-description: "View plugin version"
 
+reload-start: "Reloading configuration..."
+reload-success: "Configuration has been reloaded"
+reload-failed: "Configuration reload failed, please check the error messages in the console"
+reload-no-permission: "You do not have OP permission to use this command"
+
 claimvalue-player-only: "This command can only be used by players"
 claimvalue-must-in-your-claim: "This command can only be used within your claim"
 claimvalue-your-score: "Your claim [${1}] has a weighted score of ${2}"

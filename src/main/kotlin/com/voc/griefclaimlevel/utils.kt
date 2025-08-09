@@ -1,7 +1,13 @@
+/*
+ * Created by Voc-夜芷冰 (Vocaloid2048)
+ * Copyright © 2025 . All rights reserved.
+ */
+
 package com.voc.griefclaimlevel
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
@@ -10,14 +16,12 @@ import java.io.File
 import java.util.logging.Logger
 import kotlin.to
 
-val GCFLoggerPrefix = "&b[GriefClaimLevel]&r"
-val GCFLoggerPrefixS = "${ChatColor.AQUA}[GriefClaimLevel]${ChatColor.RESET}"
-
-fun Logger.infoP(info: String) = info("$GCFLoggerPrefix &f$info")
-
-fun Logger.warningP(warning: String) = warning("$GCFLoggerPrefix &e$warning")
-
-fun Logger.severeP(severe: String) = severe("$GCFLoggerPrefix &c$severe")
+val GCFLoggerPrefix =
+    "${ChatColor.DARK_GRAY}[Grief" +
+        "${ChatColor.GOLD}Claim" +
+        "${ChatColor.AQUA}Level]" +
+        "${ChatColor.RESET}"
+val serverSender = Bukkit.getServer().consoleSender
 
 fun String.placeholders(vararg placeholders: String): String {
     var result = this
@@ -28,19 +32,19 @@ fun String.placeholders(vararg placeholders: String): String {
 }
 
 fun CommandSender.sendMessageWarning(message: String, prefixNeed : Boolean = false) {
-    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefixS " else ""}${ChatColor.YELLOW}$message")
+    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefix " else ""}${ChatColor.YELLOW}$message")
 }
 
 fun CommandSender.sendMessageError(message: String, prefixNeed : Boolean = false) {
-    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefixS " else ""}${ChatColor.RED}$message")
+    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefix " else ""}${ChatColor.RED}$message")
 }
 
 fun CommandSender.sendMessageSuccess(message: String, prefixNeed : Boolean = false) {
-    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefixS " else ""}${ChatColor.GREEN}$message")
+    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefix " else ""}${ChatColor.GREEN}$message")
 }
 
 fun CommandSender.sendMessageInfo(message: String, prefixNeed : Boolean = false) {
-    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefixS " else ""}${ChatColor.WHITE}$message")
+    this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefix " else ""}${ChatColor.WHITE}$message")
 }
 
 fun GriefClaimLevel.loadTranslationConfig(langCode: String) : Map<String, String> {
@@ -54,7 +58,7 @@ fun GriefClaimLevel.loadTranslationConfig(langCode: String) : Map<String, String
         saveResource("translation_en_US.yml", false)
     }
     if (!file.canRead()) {
-        logger.severeP("CANNOT READ TRANSLATION FILE! Please check the file permissions.")
+        serverSender.sendMessageError("CANNOT READ TRANSLATION FILE! Please check the file permissions.", true)
         server.pluginManager.disablePlugin(this)
         return emptyMap()
     }
@@ -63,7 +67,7 @@ fun GriefClaimLevel.loadTranslationConfig(langCode: String) : Map<String, String
         val translationConfig = YamlConfiguration.loadConfiguration(file)
         return translationConfig.getKeys(false).associateWith { (translationConfig.getString(it, "???") ?: "???") }
     } catch (e: Exception) {
-        logger.severeP("Unable to load Translation file: ${e.message}")
+        serverSender.sendMessageError("Unable to load Translation file: ${e.message}", true)
         server.pluginManager.disablePlugin(this)
         return emptyMap()
     }
@@ -81,11 +85,11 @@ internal fun GriefClaimLevel.loadBlockConfig() : Map<String, Double> {
             it to blockConfig.getDouble("blocks.$it", 0.0)
         } ?: emptyMap()
         if (blockValues.isEmpty()) {
-            logger.warningP("${gclTranslation["gcl-blockconfig-empty"]}")
+            serverSender.sendMessageError("${gclTranslation["gcl-blockconfig-empty"]}", true)
         }
         return blockValues
     } catch (e: Exception) {
-        logger.severeP("${gclTranslation["gcl-unable-load-yml"]}".placeholders(fileName, e.message ?: "Unknown error"))
+        serverSender.sendMessageError("${gclTranslation["gcl-unable-load-yml"]}".placeholders(fileName, e.message ?: "Unknown error"), true)
         return emptyMap()
     }
 }

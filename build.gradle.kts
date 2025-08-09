@@ -1,3 +1,8 @@
+/*
+ * Created by Voc-夜芷冰 (Vocaloid2048)
+ * Copyright © 2025 . All rights reserved.
+ */
+
 plugins {
     kotlin("jvm") version "2.2.20-Beta2"
     id("com.gradleup.shadow") version "8.3.0"
@@ -5,7 +10,7 @@ plugins {
 }
 
 group = "com.voc"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenCentral()

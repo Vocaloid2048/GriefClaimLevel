@@ -1,25 +1,19 @@
+/*
+ * Created by Voc-夜芷冰 (Vocaloid2048)
+ * Copyright © 2025 . All rights reserved.
+ */
+
 package com.voc.griefclaimlevel
 
-import com.voc.griefclaimlevel.commands.ClaimLeaderboardCommand
-import com.voc.griefclaimlevel.commands.ClaimValueCommand
-import com.voc.griefclaimlevel.commands.ClaimValueTabCompleter
-import com.voc.griefclaimlevel.commands.ReloadCommand
-import com.voc.griefclaimlevel.commands.VersionCommand
+import com.voc.griefclaimlevel.commands.*
 import com.voc.griefclaimlevel.placeholder.ClaimPlaceholderExpansion
-import me.ryanhamshire.GriefPrevention.Claim
 import me.ryanhamshire.GriefPrevention.GriefPrevention
 import org.bukkit.ChatColor
-import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
-import java.util.UUID
+import java.util.*
 import java.util.concurrent.ConcurrentHashMap
-import java.util.logging.Logger
-import kotlin.math.max
-import kotlin.math.min
 
 class GriefClaimLevel : JavaPlugin() {
     lateinit var griefPrevention: GriefPrevention
@@ -33,11 +27,11 @@ class GriefClaimLevel : JavaPlugin() {
         configInit()
 
         // Enabling GriefClaimLevel - Check whether GriefPrevention Exist
-        logger.infoP("${gclTranslation["gcl-trying-init"]}")
+        serverSender.sendMessageInfo("${gclTranslation["gcl-trying-init"]}", true)
         griefPrevention = server.pluginManager.getPlugin("GriefPrevention")?.let {
             it as GriefPrevention
         } ?: run {
-            logger.severeP("${gclTranslation["gcl-not-found-griefPrevention"]}")
+            serverSender.sendMessageError("${gclTranslation["gcl-not-found-griefPrevention"]}", true)
             server.pluginManager.disablePlugin(this)
             return
         }
@@ -58,7 +52,7 @@ class GriefClaimLevel : JavaPlugin() {
             config = configFile.getKeys(false).associateWith { (configFile.get(it, null)) }
 
         } catch (e: Exception) {
-            logger.severeP("${ChatColor.RED}WHERE IS MY CONFIG FILE...??? : ${e.message}")
+            serverSender.sendMessageError("WHERE IS MY CONFIG FILE...??? : ${e.message}",true)
             server.pluginManager.disablePlugin(this)
             return false
         }
@@ -71,9 +65,9 @@ class GriefClaimLevel : JavaPlugin() {
         if (server.pluginManager.getPlugin("PlaceholderAPI") != null) {
             // Register Placeholder
             ClaimPlaceholderExpansion(this).register()
-            logger.infoP("${gclTranslation["gcl-placeholder-registered"]}")
+            serverSender.sendMessageSuccess("${gclTranslation["gcl-placeholder-registered"]}", true)
         } else {
-            logger.warningP("${gclTranslation["gcl-placeholderapi-not-found"]}")
+            serverSender.sendMessageWarning("${gclTranslation["gcl-placeholderapi-not-found"]}", true)
         }
     }
 

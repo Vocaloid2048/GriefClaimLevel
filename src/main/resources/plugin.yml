@@ -18,7 +18,7 @@ commands:
   gcfversion:
     description: 版本查看
     usage: /<command>
-  gcreload:
+  gcfreload:
     description: 重新載入配置
     usage: /<command>
     default: op

@@ -23,5 +23,4 @@ class ClaimLeaderboardCommand(private val plugin: GriefClaimLevel) : CommandExec
         }
         return true
     }
-
 }

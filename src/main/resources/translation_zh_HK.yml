@@ -1,0 +1,34 @@
+
+gcl-trying-init: "而家試緊啟用 GriefClaimLevel，等我一陣好快搞掂"
+gcl-not-found-griefPrevention: "大檸樂！搵唔到 GriefPrevention 喎！所以會停用呢個插件"
+gcl-unable-load-yml: "Load唔到 ${1}.yml: ${2}"
+gcl-placeholderapi-not-found: "大鑊...搵唔到 PlaceholderAPI，所以所有 Placeholder 嘅功能都用唔到"
+gcl-placeholder-registered: "插件嘅 Placeholder 已成功註冊，掂晒！"
+gcl-blockconfig-empty: "blockconfig.yml 冇有效嘅方塊設定，套用吉嘅假設值"
+
+leaderboard-empty: "排行榜未有玩家上榜"
+leaderboard-header: "=== 領地分數排行榜 (第 ${1} 頁) ==="
+
+cmd-claimvalue-usage: "用法: /claimvalue [要唔要詳細資料 <Boolean>]"
+cmd-claimlb-usage: "用法: /claimlb [頁數 <Int>]"
+cmd-version-usage: "用法: /version"
+cmd-claimvalue-description: "睇下你領地嘅加權分數"
+cmd-claimlb-description: "睇下領地加權分數排行榜"
+cmd-version-description: "睇下插件版本"
+
+reload-start: "而家重新Load返啲Setting，飲啖水先"
+reload-success: "Setting已經Load好晒，辛苦晒啦～"
+reload-failed: "Setting Loading有問題，請睇下控制台有冇錯誤信息"
+reload-no-permission: "你冇OP權限嚟用呢個指令"
+
+claimvalue-player-only: "呢個指令只可以由玩家用"
+claimvalue-must-in-your-claim: "呢個指令只可以喺你自己嘅領地入面用"
+claimvalue-your-score: "你塊領地 [${1}] 嘅加權分數係 ${2}"
+
+claimvalue-detail: "========= 分數詳情 =========="
+claimvalue-detail-header-blockname: "方塊名"
+claimvalue-detail-header-blockcount: "數量"
+claimvalue-detail-header-blockscore: "分數"
+
+version-plugin-author: "GriefClaimLevel 係由 Voc-夜芷冰 (@vocaloid2048) 開發嘅，感謝使用"
+version-plugin-version: "插件版本 ${1}"
