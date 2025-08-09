@@ -1,0 +1,29 @@
+
+gcl-trying-init: "正在嘗試啟用 GriefClaimLevel"
+gcl-not-found-griefPrevention: "GriefPrevention 未找到，插件將禁用！"
+gcl-unable-load-yml: "無法載入 ${1}.yml: ${2}"
+gcl-placeholderapi-not-found: "找不到PlaceholderAPI，Placeholder 功能將不可用"
+gcl-placeholder-registered: "本插件的Placeholder已成功註冊"
+gcl-blockconfig-empty: "blockconfig.yml 未包含有效的方塊配置，將使用空配置"
+
+leaderboard-empty: "排行榜目前沒有任何玩家"
+leaderboard-header: "=== 領地分數排行榜 (第 ${1} 頁) ==="
+
+cmd-claimvalue-usage: "用法: /claimvalue [需要詳細信息 <Boolean>]"
+cmd-claimlb-usage: "用法: /claimlb [頁數 <Int>]"
+cmd-version-usage: "用法: /version"
+cmd-claimvalue-description: "查看當前領地的加權分數"
+cmd-claimlb-description: "查看領地分數排行榜"
+cmd-version-description: "查看插件版本"
+
+claimvalue-player-only: "此命令只能由玩家使用"
+claimvalue-must-in-your-claim: "此命令只能在您的領地內使用"
+claimvalue-your-score: "你的領地 [${1}] 的加權分數為 ${2}"
+
+claimvalue-detail: "========= 分數明細 =========="
+claimvalue-detail-header-blockname: "名稱"
+claimvalue-detail-header-blockcount: "數量"
+claimvalue-detail-header-blockscore: "分數"
+
+version-plugin-author: "GriefClaimLevel 由 Voc-夜芷冰 (@vocaloid2048) 製作，感謝使用"
+version-plugin-version: "當前版本 ${1}"

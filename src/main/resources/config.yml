@@ -1,2 +1,12 @@
-# Nothing there right now
-# Maybe add height range later
+# Supported languages: zh_TW, en_US
+language: zh_TW
+
+# E.g. 1,234.56 is #,##0.00
+decimal_format: "#,##0.00"
+
+# 領地分數計算Y軸範圍（基於玩家定義的領地所在高度）
+# 領地的高度範圍將影響分數計算
+# below一定是負數！above一定是正數！
+# 例如：claim_height_land_below: -32, claim_height_land_above: +64
+claim_height_land_below: -32
+claim_height_land_above: +64

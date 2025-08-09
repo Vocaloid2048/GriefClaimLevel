@@ -1,16 +1,24 @@
 name: GriefClaimLevel
-version: '1.0.2'
+version: ${version}
 main: com.voc.griefclaimlevel.GriefClaimLevel
 api-version: 1.21
 depend: [GriefPrevention]
 softdepend: [PlaceholderAPI]
 commands:
-  claimvalue:
+  gcfclaimvalue:
+    aliases:
+      - claimvalue
     description: 查看當前領地的加權分數
-    usage: /<command> [needDetail]
-  claimlb:
+    usage: /<command> [true|false]
+  gcfclaimlb:
+    aliases:
+      - claimlb
     description: 查看領地分數排行榜
     usage: /<command> [page]
-  version:
+  gcfversion:
     description: 版本查看
     usage: /<command>
+  gcreload:
+    description: 重新載入配置
+    usage: /<command>
+    default: op

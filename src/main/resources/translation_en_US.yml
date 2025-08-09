@@ -1,0 +1,29 @@
+
+gcl-trying-init: "Trying to enable GriefClaimLevel"
+gcl-not-found-griefPrevention: "GriefPrevention not found, plugin will be disabled!"
+gcl-unable-load-yml: "Unable to load ${1}.yml: ${2}"
+gcl-placeholderapi-not-found: "PlaceholderAPI not found, Placeholder features will be unavailable"
+gcl-placeholder-registered: "Placeholders for this plugin have been successfully registered"
+gcl-blockconfig-empty: "blockconfig.yml does not contain valid block configurations, using empty configuration"
+
+leaderboard-empty: "The leaderboard currently has no players"
+leaderboard-header: "=== Claim Score Leaderboard (Page ${1}) ==="
+
+cmd-claimvalue-usage: "Usage: /claimvalue [needDetail <Boolean>]"
+cmd-claimlb-usage: "Usage: /claimlb [page <Int>]"
+cmd-version-usage: "Usage: /version"
+cmd-claimvalue-description: "View the weighted score of the current claim"
+cmd-claimlb-description: "View the claim score leaderboard"
+cmd-version-description: "View plugin version"
+
+claimvalue-player-only: "This command can only be used by players"
+claimvalue-must-in-your-claim: "This command can only be used within your claim"
+claimvalue-your-score: "Your claim [${1}] has a weighted score of ${2}"
+
+claimvalue-detail: "========= Score Details ========="
+claimvalue-detail-header-blockname: "Name"
+claimvalue-detail-header-blockcount: "Count"
+claimvalue-detail-header-blockscore: "Score"
+
+version-plugin-author: "GriefClaimLevel is made by Voc-夜芷冰 (@vocaloid2048), thank you for using it"
+version-plugin-version: "Current version ${1}"
