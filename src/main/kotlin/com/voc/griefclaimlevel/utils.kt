@@ -12,9 +12,9 @@ import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.command.CommandSender
 import org.bukkit.configuration.file.YamlConfiguration
-import java.io.File
-import java.util.logging.Logger
-import kotlin.to
+import org.bukkit.plugin.java.JavaPlugin
+import java.io.*
+import java.util.logging.Level
 
 val GCFLoggerPrefix =
     "${ChatColor.DARK_GRAY}[Grief" +
@@ -47,20 +47,26 @@ fun CommandSender.sendMessageInfo(message: String, prefixNeed : Boolean = false)
     this.sendMessage("${if (prefixNeed) "$GCFLoggerPrefix " else ""}${ChatColor.WHITE}$message")
 }
 
+val LANG_LIST = listOf<String>("zh_TW", "en_US", "zh_HK")
 fun GriefClaimLevel.loadTranslationConfig(langCode: String) : Map<String, String> {
-    val file = File(dataFolder, "translation_${langCode}.yml")
-    val fileEN = File(dataFolder, "translation_en_US.yml")
+    val file = File(dataFolder, "translation/translation_${langCode}.yml")
+    val folder = File(dataFolder, "translation")
 
-    if (!file.exists()) {
-        saveResource("translation_${langCode}.yml", false)
-    }
-    if (!fileEN.exists()) {
-        saveResource("translation_en_US.yml", false)
-    }
-    if (!file.canRead()) {
-        serverSender.sendMessageError("CANNOT READ TRANSLATION FILE! Please check the file permissions.", true)
-        server.pluginManager.disablePlugin(this)
-        return emptyMap()
+    if (!folder.exists()) {
+        folder.mkdirs()
+        LANG_LIST.map {
+            saveResource("translation/translation_${it}.yml", false)
+        }
+    }else{
+        if (!file.exists()) {
+            saveResource("translation/translation_${langCode}.yml", false)
+        }
+        if (!file.canRead()) {
+            serverSender.sendMessageError("CANNOT READ TRANSLATION FILE! Please check the file permissions.", true)
+            server.pluginManager.disablePlugin(this)
+            return emptyMap()
+        }
+
     }
 
     try {

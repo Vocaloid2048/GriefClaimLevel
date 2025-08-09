@@ -19,7 +19,7 @@ class GriefClaimLevel : JavaPlugin() {
     lateinit var griefPrevention: GriefPrevention
     internal lateinit var config: Map<String, Any?>
     internal lateinit var gclTranslation: Map<String, String>
-    internal val BLOCK_VALUES: Map<String, Double> by lazy { loadBlockConfig() }
+    internal lateinit var BLOCK_VALUES: Map<String, Double>
     private val leaderboard = ConcurrentHashMap<UUID, Double>()
     val claimScores = ConcurrentHashMap<UUID, Double>()
 
@@ -39,6 +39,8 @@ class GriefClaimLevel : JavaPlugin() {
         commandRegisting()
 
         registerPlaceholder()
+
+        BLOCK_VALUES = loadBlockConfig()
 
         updateLeaderboard()
     }
