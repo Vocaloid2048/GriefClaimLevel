@@ -107,7 +107,6 @@ class GriefClaimLevel : JavaPlugin() {
     // Modify Language yourself
     fun getLocalizedBlockName(material: Material, logger: Logger): String {
         val component = material.translationKey().let { Component.translatable(it) }
-        logger.severe("component for ${material.translationKey()} : $component")
         return LegacyComponentSerializer.legacySection().serialize(component)
     }
 
